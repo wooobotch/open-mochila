@@ -20,6 +20,8 @@ main() {
           ;;
         Imprimir | imprimir | IMPRIMIR)
           echo -e $"Ingrese el nombre o ruta del fichero a imprimir."
+          read -p "Nombre o ruta del fichero de referencia: " NOMBRE
+          generarSorteo $NOMBRE
           ;;
         Salir | SALIR | salir | FIN | fin | Fin)
           break
@@ -56,25 +58,69 @@ editarFichero() {
     echo -e $"> CE para finalizar la edición."
     read -p "Ingrese una de las opciones listadas: " EDITAR
     case $EDITAR in
-      BC | bc)
-        echo -e $"Se procederá a eliminar una consigna con todas sus respuestas."
-        ;;
-      BR | br)
-        echo -e $"Se procederá a eliminar una respuesta de una consigna específica."
-        ;;
-      AC | ac)
-        echo -e $"Se procederá a añadir una nueva consigna."
-        ;;
-      AR | ar)
-        echo -e $"Se procederá a añadir una nueva respuesta a una consigna específica."
-        ;;
       CE | ce)
         echo -e $"Edición Finalizada."
         break
         ;;
+      BC | bc | AC | ac | BR | br | AR | ar)
+        bash ./editar.sh $1 $EDITAR
+      *)
+        ;;
     esac
   done
 }
+
+generarSorteo() {
+  avisoSorteo
+  while :
+  do
+    echo -e $"\n> BC para eliminar una consigna.\n> BR para eliminar una respuesta de una consigna."
+    echo -e $"> AC para añadir una nueva consigna.\n> AR para añadir una nueva respuesta a una consigna."
+    echo -e $"> CE para finalizar la edición."
+    read -p "Ingrese una de las opciones listadas: " EDITAR
+    case $EDITAR in
+      CE | ce)
+        echo -e $"Edición Finalizada."
+        break
+        ;;
+      BC | bc | AC | ac | BR | br | AR | ar)
+        bash ./editar.sh $1 $EDITAR
+      *)
+        ;;
+    esac
+  done
+}
+
+###FUNCION BASE
+#editarFichero() {
+#  avisoEditor
+#  while :
+#  do
+#    echo -e $"\n> BC para eliminar una consigna.\n> BR para eliminar una respuesta de una consigna."
+#    echo -e $"> AC para añadir una nueva consigna.\n> AR para añadir una nueva respuesta a una consigna."
+#    echo -e $"> CE para finalizar la edición."
+#    read -p "Ingrese una de las opciones listadas: " EDITAR
+#    case $EDITAR in
+#      BC | bc)
+#        echo -e $"Se procederá a eliminar una consigna con todas sus respuestas."
+#        ;;
+#      BR | br)
+#        echo -e $"Se procederá a eliminar una respuesta de una consigna específica."
+#        ;;
+#      AC | ac)
+#        echo -e $"Se procederá a añadir una nueva consigna."
+#        ;;
+#      AR | ar)
+#       echo -e $"Se procederá a añadir una nueva respuesta a una consigna específica."
+#        ;;
+#      CE | ce)
+#        echo -e $"Edición Finalizada."
+#        break
+#        ;;
+#    esac
+#  done
+#}
+################################################
 
 procesarFichero(){
   existeFichero $1 && describirFichero $1 && editarFichero $1 || crearFichero $1
@@ -84,6 +130,10 @@ procesarFichero(){
 ##################################################################
 #Ayuda y texto complementario
 ayuda() {
+  echo -e $"Comentarios de ayuda.\n"
+}
+
+avisoSorteo() {
   echo -e $"Comentarios de ayuda.\n"
 }
 
