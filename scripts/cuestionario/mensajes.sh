@@ -14,6 +14,12 @@ avisoSorteo() {
   echo -e $"Comentarios de ayuda.\n"
 }
 
+opcionesEditor() {
+  echo -e $"\n> BC para eliminar una consigna.\n> BR para eliminar una respuesta de una consigna."
+  echo -e $"> AC para añadir una nueva consigna.\n> AR para añadir una nueva respuesta a una consigna."
+  echo -e $"> CE para finalizar la edición."
+}
+
 avisoEditor() {
   echo -e $"Se recomienda utilizar un editor de textos externo,\npor ejemplo vim o emacs.\n"
 }
@@ -59,10 +65,13 @@ case $1 in
   avisoSorteo)
     avisoSorteo
     ;;
+  opcionesEditor)
+    opcionesEditor
+    ;;
   avisoEditor)
     avisoEditor
     ;;
   ficheroNuevo)
-    [ "$#" -eq 2 ] && crearFichero $2 || echo $"No se ha podido proceder con la creación.\nDebe ingresar un nombre para el archivo."
+    [ "$#" -eq 2 ] && crearFichero $2 || echo -e $"No se ha podido proceder con la creación.\nDebe ingresar un nombre para el archivo."
     ;;
 esac
