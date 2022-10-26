@@ -1,10 +1,12 @@
 #!/bin/bash
-set -Eeo pipefail
+set -Eeo pipefaily
 
 ##################################################################
 ##################################################################
 #Variables globales
 TEXTO="./mensajes.sh"
+BORRAR="./eliminarRespuesta.sh"
+INSRESP="./insertarRespuesta.sh"
 
 ##################################################################
 ##################################################################
@@ -34,28 +36,32 @@ borrarConsigna() {
 
 ##################################################################
 borrarRespuesta() {
-  #Simil seleccion anterior
-  #enumero las respuestas de la selección, map de awk
-  #awk todo menos la línea de la respuesta
-  echo "HOLA"
+  bash $BORRAR $1
 }
 
 ##################################################################
 agregarConsigna() {
-  echo "HOLA"
-#Tipo
-#cantidad inicial de resp
-#texto consigna
-#cat
-#agregar respuesta $POSIC_CONSIGNA
+  FILE=$(date +"%s")
+  CONSIGNA="[?]"
+  read -p "Tipo de consigna: " TIPO
+  case TIPO in
+    1)
+      CONSINGA=$"$CONSINGNA[VF]"
+      ;;
+    2)
+      CONSINGA=$"$CONSINGNA[MO]"
+      ;;
+  esac
+
+  read -p "Ingrese el contenido de la consigna: " TEXTO
+  CONSIGNA=$"CONSIGNA$TEXTO"
+  echo -e $"\nSe agregará al final del listado:\n$CONSIGNA\n"
+
 }
 
 ##################################################################
 agregarRespuesta() {
-  echo "HOLA"
-#si no hay cantidad inicial iterar hasta recibir empty o algo así
-#iterar hasta cantidad inicial: V o F y texto
-#cat
+  bash $INSRESP $1
 }
 
 ##################################################################
