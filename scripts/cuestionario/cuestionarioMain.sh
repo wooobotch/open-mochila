@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -Eeo pipefail
 
 
@@ -47,7 +47,7 @@ main() {
 
 ################################################
 existeFichero(){
-  [ -f $1 ] || (echo -e $"No se encuentra el documento solicitado.\n" && return 1)
+  [ -z $# ] && [ -f $1 ] || (echo -e $"No se encuentra el documento solicitado.\n" && return 1)
 }
 
 ################################################
@@ -73,7 +73,10 @@ editarFichero() {
         ;;
       BC | bc | AC | ac | BR | br | AR | ar)
         bash $APUNTAR $1 $EDITAR
+        break
+        ;;
       *)
+        break
         ;;
     esac
   done
@@ -128,4 +131,4 @@ crearFichero() {
 ##################################################################
 ##################################################################
 #Llamado y ejecución de funciones
-[ -z "$*" ] && ayuda || main $1
+[ -z "$*" ] && bash $TEXTO ayuda || main $1

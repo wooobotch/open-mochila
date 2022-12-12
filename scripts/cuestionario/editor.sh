@@ -17,7 +17,8 @@ borrarConsigna() {
   grep -n "^\[?]" $1
   read -p "Ingrese el número de línea de la consigna: " LINEA
 
-  EXTREMOS=$(grep -n "^\[?]" modelo.abry | cut -d: -f 1 | grep -A 1 $"^$LINEA" | head -n 2 | xargs -n2 | awk '{print $1 "-" $2}')
+  #EXTREMOS=$(grep -n "^\[?]" modelo.abry | cut -d: -f 1 | grep -A 1 $"^$LINEA" | head -n 2 | xargs -n2 | awk '{print $1 "-" $2}')
+  EXTREMOS=$(grep -n "^\[?]" $1 | cut -d: -f 1 | grep -A 1 $"^$LINEA" | head -n 2 | xargs -n2 | awk '{print $1 "-" $2}')
   INICIO=$(echo  $EXTREMOS | cut -d "-" -f 1)
   FIN=$(echo $EXTREMOS | cut -d "-" -f 2)
 
