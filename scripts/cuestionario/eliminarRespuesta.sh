@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 borrar() {
   [ $# -lt 2 ] && return

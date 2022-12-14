@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 generarOpc(){
   read -p "Valor de la respuesta: " TIPO
