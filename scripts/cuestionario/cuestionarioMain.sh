@@ -97,10 +97,14 @@ generarSorteo() {
         [ -z $PAG ] continue
         read -p "Ingrese la cantidad máxima de consignas: " TQ
         [ -z $TQ ] continue
-        read -p "Cantidad de consignas Verdadero o Falso: " VOF
-        [ -z $VOF ] && MPMAX=$TQ || read -p "Cantidad consignas de opción múltiple: " MOP
-        [ -z $MOP ] MPMAX=0 || read -p "Cantidad máxima de opciones: " MPMAX
-        bash $SORTEAR  PAG TQ VOF MOP MPMAX
+
+        ## A implementar: cantidades de consignas por tipo a sortearse.
+        ##read -p "Cantidad de consignas Verdadero o Falso: " VOF
+        ##[ -z $VOF ] && MPMAX=$TQ || read -p "Cantidad consignas de opción múltiple: " MOP
+        ##[ -z $MOP ] MPMAX=0 || read -p "Cantidad máxima de opciones: " MPMAX
+        ##bash $SORTEAR  PAG TQ VOF MOP MPMAX
+
+        bash $SORTEAR  PAG TQ $1
         ;;
       NO | no | n | N)
         bash $SORTEAR
