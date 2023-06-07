@@ -4,12 +4,12 @@ EDITOR="nano"
 PFILES="pFiles"
 PWD=$( cd -- "$(dirname "$0")" >/dev/null 2>&1 && pwd -P )/$PFILES
 
-AYUDA="AGENDA\nLa presente herramienta consta de generación y control de
-plantillas de registros.\nPara 'instalar' ejecute el script 'instalar.sh' y
-siga las instrucciones.\nLos registros son creados con campos por defecto (ID,
+AYUDA="AGENDA\n La presente herramienta consta de generación y control de
+plantillas de registros.\n Para 'instalar' ejecute el script 'instalar.sh' y
+siga las instrucciones.\n Los registros son creados con campos por defecto (ID,
 PROJECT, TITLE, STATUS, ASSIGNEE, CREATION_DATE, DUE_DATE, SUMMARY)\npero
 pueden añadirse o cambiarse detalles en con cualquier editor
-de texto.\nLos registros se encuentran en el directorio $PFILES.\n\n
+de texto.\n Los registros se encuentran en el directorio $PFILES.\n\n
 -a\tInicia la creación de un nuevo registro.\n
 -o\tLista los registros con estado abierto (STATUS open).\n
 -n\tInserta un comentario a un registro existente.\n
@@ -18,7 +18,13 @@ de texto.\nLos registros se encuentran en el directorio $PFILES.\n\n
 -b\tLista los registros con estado bloqueado (STATUS blocked).\n
 -p\tLista los nombres proyectos a asociados a los registros existentes(campo PROJECT).\n
 -m\tAbre un registro con un editor de textos.\n
--l\tLista todos los registros con un resumen de información para cada caso.\n"
+-l\tLista todos los registros con un resumen de información para cada caso.\n\n
+Es posible acceder a las funciones invocadas al utilizar alternativas a los\narguentos
+listados anteriormente pero no se prefieren esas formas dado que su\nprimer
+propósito fue el de acotar el resultado obtenido.\n\n
+Eliminar un campo, editar su contenido o insertar un campo personalizado se hará\nmediante
+el editor de textos. Se prefirió la simplicidad y la agilidad al crear los registros\ny
+se insta a tomar cuanto tiempo fuera necesario para hacer modificaciones."
 
 getLabel(){
 	grep $3 $1 $2 | cut -d " " -f 2
