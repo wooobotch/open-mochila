@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+mkdir -p /home/abraham/agenda/prueba/pFiles
+
+cp /home/abraham/Repos/Personal/open-mochila/scripts/agenda/agenda.sh /home/abraham/agenda/prueba
+
+chmod u+x /home/abraham/agenda/prueba
